@@ -3,12 +3,12 @@ var twoSum = function (nums, target) {
   let numsClone = [...nums];
 
   for (let i = 0; i < numsClone.length; i++) {
-    // remove a single element of the array with each iteration to compare to rest of the numbers
+    // remove a single element of the array with each iteration to compare to rest of the numbers in the array
     let num = numsClone.splice(i, 1)[0];
 
     for (let j = 0; j < numsClone.length; j++) {
       if (num + numsClone[j] === target) {
-        // add one because we removed an element above
+        // add one because removed an element above, from array
         return [i, j + 1];
       }
     }
