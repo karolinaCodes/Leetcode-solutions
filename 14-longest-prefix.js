@@ -12,40 +12,34 @@ Output: "fl"*/
  */
 
 const longestCommonPrefix = function (strs) {
-  let commonPrefix = '';
-  let currString = '';
-  let common;
-  const firstString = strs.shift();
+  let prefix = '';
+  let preprefix = '';
 
-  // loop through characters of first string of array
-  // and slice from beggining of string to i to compare
-  for (let i = 1; i < firstString.length + 1; i++) {
-    const currString = firstString.slice(0, i);
-
-    // loop through remaining strings of array
-    for (let j = 0; j < strs.length; j++) {
-      // if current string starts with sliced string of first string of array set common to true
-      if (strs[j].startsWith(currString)) {
-        common = true;
-      } else {
-        common = false;
-      }
-    }
-
-    // if the prefix is common change commonPrefix or else break out of the loop
-    if (common) {
-      commonPrefix = currLetter;
-    } else {
-      break;
-    }
+  if (!strs[0]) {
+    return '';
   }
 
-  return commonPrefix;
+  for (let i = 0; i < strs[0].length; i++) {
+    prefix += strs[0][i];
+
+    for (var j = 0; j < strs.length; j++) {
+      if (!strs[j].startsWith(prefix)) {
+        return preprefix;
+      }
+    }
+    preprefix = prefix;
+  }
+
+  return prefix;
 };
 
 strs = ['flower', 'flow', 'flight'];
 strs2 = ['dog', 'racecar', 'car'];
+strs3 = ['a'];
+strs4 = ['aaa', 'aa', 'aaa'];
 
 // DRIVER CODE //
 console.log(longestCommonPrefix(strs));
 console.log(longestCommonPrefix(strs2));
+console.log(longestCommonPrefix(strs3));
+console.log(longestCommonPrefix(strs4));
